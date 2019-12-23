@@ -1,16 +1,21 @@
-# Component Name
-Write the component overview here
+# rn-pin-submission
+A React Native pin-submission component. This component will show 6 pin-input field complete with count down timer and send OTP handler.
 
+![](pin-submission.gif)
 
 ## Usage
 
 ```jsx
-    <ComponentName
-        caption="Submit"
-        onPress={somefunction}
-        bold
-        italic
-        color="#00f"
+    <PinSubmission
+        onSubmit={pin => { console.log(username, pin); }}
+        onResendOtp={() => { console.log('Resend OTP!'); }}
+        onPinExpired={() => { console.log('Pin has expired!'); }}
+        phoneNumber="08123456789"
+        loading={false}
+        resending={false}
+        onTimeIsUp={() => { console.log('Time is up!'); }}
+        canResendOtpAt="2019-12-19T17:35+07:00"
+        pinExpirationDate="2019-12-19T17:30+07:00"
     />
 ```
 
@@ -18,13 +23,15 @@ Write the component overview here
 
  Name           | Description                                 | Type     | Required  | Default value   
 :---------------|:------------------------------------------- |:---------|:---------:|:--------------
- caption        | Caption of the component                    | string   | yes       |           
- disabled       | Make the component disabled                 | boolean  |           | false          
- onPress        | Callback when the component is pressed      | function | yes       |           
- bold           | Make the text bold                          | boolean  |           | false          
- italic         | Make the text italic                        | boolean  |           | false          
- color          | The color of the component                  | string   |           | `#2f2f2f`          
- disabledColor  | The color when the component is disabled    | string   |           | `#8C8C8C`        
+ canResendOtpAt        | Time value to send new OTP code. Time value should be in complete ISO-8601 date time format `YYYY-MM-DDTHH:mmZ`. `YYYY` is 4 digit year, `MM` is month number, `DD` is day of month, `HH` is hours in 24 hour time, `mm` is minutes, and `Z` is offset from UTC time, such as `+-HH:mm`. Adding seconds `s` and fractional seconds `SS` are optional                   | string   | yes       |           
+ loading       | Status of submitting OTP code                 | boolean  | yes          |           
+ onPinExpired        | Callback called when pin has expired      | function | yes       |           
+ onResendOtp           | Callback called when resending OTP code                          | function  | yes          |           
+ onSubmit         | Callback called when submitting OTP code                        | function  | yes          |           
+ onTimeIsUp          | Callback called when pin has expired                  | function   | yes          |           
+ phoneNumber  | Phone number which will receive OTP code    | string   | yes          |         
+ pinExpirationDate  | Expiring pin time value in complete ISO-8601 date time format `YYYY-MM-DDTHH:mmZ`. `YYYY` is 4 digit year, `MM` is month number, `DD` is day of month, `HH` is hours in 24 hour time, `mm` is minutes, and `Z` is offset from UTC time, such as `+-HH:mm`. Adding seconds `s` and fractional seconds `SS` are optional    | string   | yes          |         
+ resending  | Status of resending OTP code    | boolean   | yes          |         
 
 
 ```
@@ -33,15 +40,6 @@ Write the component overview here
 ```
 
 
-## Note:
-After cloning this repo, don't forget to edit these files:
-
-1. Edit these fields inside `package.json` file
-   - name
-   - description
-   - url for `repository`, `bugs`, and `homepage`
-   - author
-
-2. Edit component name inside `index.js` file.
-3. Edit component name inside `src/custom-component.js` file.
-4. Rename `src/custom-component.js` file appropriately.
+### Note:
+* This package use `rn-count-down` component for its count down timer. [Click here](https://github.com/miidx/rn-count-down "rn-count-down") to read the documentation.
+* This package also use `rn-pin-input` component for its pin-input field. [Click here](https://github.com/miidx/rn-pin-input "rn-pin-input") to read the documentation.
