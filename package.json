@@ -20,7 +20,7 @@
     "@miidx/rn-count-down": "^1.0.0",
     "@miidx/rn-pin-input": "^0.9.2",
     "@miidx/rn-text-button": "^0.9.1",
-    "moment-timezone": "^0.5.27"
+    "moment-timezone": "^0.5.35"
   },
   "peerDependencies": {
     "react": "*",
